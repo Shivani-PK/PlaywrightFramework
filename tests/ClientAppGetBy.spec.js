@@ -8,44 +8,25 @@ test.only('browser context playwright test',async ({page})=>
     const products=page.locator(".card-body");
     const email="shisv@gmail.com"
     await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").fill("@Test123");
-    await page.locator("[value='Login'] ").click();
+    await page.getByPlaceholder("email@example.com").fill(email);
+    await page.getByPlaceholder("enter your passsword").fill("@Test123");
+    await page.getByRole("button",{name:'Login'}).click();
 
     //await page.waitForLoadState('networkidle');  wait until network comes to idle state -> 
     // means it waits until network renders all the data. it is discouraged since it is flaky
     await page.locator(".card-body b").first().waitFor();
 
-    const titles= await page.locator(".card-body b").allTextContents(); // will retrieve the text of all contents 
-    // inside the mentioned locator. since allTextContents() method doesn't have inbuilt wait mechanism,
-    // we have to explicitly mention wait in the previous line. 
-    
-    console.log(titles);
+    await page.locator(".card-body").filter({hasText:"ADIDAS ORIGINAL"}).getByRole("button",{name:" Add To Cart"}).nth(1).click();
 
-    const count=await products.count();
 
-    for(let i=0; i<count;++i)
-    {
-        if( await products.nth(i).locator("b").textContent() === productName)
-        {
-            // add to cart
-            await products.nth(i).locator("text= Add To Cart").click();
-            break;
-        }
-    }
+    await page.getByRole("listitem").getByRole("button",{name:'Cart'}).click();
 
-    await page.locator("[routerlink*='cart']").click();
     await page.locator("div li").first().waitFor();
 
-    const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL')").isVisible();
-    expect(bool).toBeTruthy();
+    await expect(page.getByText("ADIDAS ORIGINAL")).toBeVisible();
 
-    await page.locator("text=Checkout").click();
-    
-    await page.locator(".field").filter({hasText:'CVV Code '}).locator('input').fill("123");
-
-    await page.locator(".field").filter({hasText:'Name on Card '}).locator("input").fill("Shivani");
-
+    await page.getByRole("button",{name:'Checkout'}).click();
+        
     
     await page.locator("[placeholder*='Country']").pressSequentially("ind");
 
@@ -53,6 +34,8 @@ test.only('browser context playwright test',async ({page})=>
     await dropdown.waitFor();    
     
     const optionsCount=await dropdown.locator("button").count();
+
+
 
     for(let i=0;i<optionsCount;i++)
     {
@@ -64,13 +47,11 @@ test.only('browser context playwright test',async ({page})=>
         }
     }
 
-
-
     expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
 
-    await page.locator(".btnn:has-text('Place Order ')").click();
+    await page.getByText("Place Order ").click();
 
-    await expect( page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
+    await expect( page.getByText(" Thankyou for the order. ")).toHaveText(" Thankyou for the order. ");
 
     const orderId=  await page.locator(".ng-star-inserted .em-spacer-1 .ng-star-inserted").textContent();
     console.log(orderId);
