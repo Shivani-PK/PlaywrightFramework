@@ -1,6 +1,6 @@
 class APIUtils
 {
-    constructor(apiContext,loginPayLoad)
+    constructor(apiContext,loginPayLoad)    // constructor to inilialise apicontext and login info
     {
         this.apiContext=apiContext;
         this.loginPayLoad=loginPayLoad;
@@ -17,14 +17,14 @@ class APIUtils
         const loginResponseJson=await loginResponse.json(); // extract json of that reponse and store it
         const token=loginResponseJson.token;  // retrieve token from the json 
     
-        console.log(token);    
+        //console.log(token);    
         return token;
     }
 
     async  createOrder(orderPayload)
     {
-        let response={};
-        response.token=await this.getToken();
+        let response={};    // object to return orderID and token to main class
+        response.token=await this.getToken();   // create new preportly called token on response object 
         const orderResponse= await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",
         {
             data: orderPayload,
@@ -43,4 +43,4 @@ class APIUtils
     }
 }
 
-module.exports={APIUtils}
+module.exports={APIUtils}   // exporting module so that main class can use it

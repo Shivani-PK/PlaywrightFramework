@@ -46,11 +46,6 @@ test.beforeAll(async ()=>
     // console.log(orderResponseJson);
 });
 
-test.beforeEach(()=>
-{
-
-});
-
 test.only('API testing',async ({page})=> 
 {
 
