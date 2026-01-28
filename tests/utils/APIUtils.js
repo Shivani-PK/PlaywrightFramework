@@ -43,4 +43,4 @@ class APIUtils
     }
 }
 
-module.exports={APIUtils}   // exporting module so that main class can use it
+module.exports={APIUtils}   // exporting module so that any class can use it

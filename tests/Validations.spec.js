@@ -31,3 +31,28 @@ test( "Popup validations",async({page})=>
     const number=textCheck.split(" ")[1];
     console.log(number);
 })
+
+//screenshot 
+test('Screenshot and visual comparison',async ({page})=>
+{
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+    await expect(page.locator("#displayed-text")).toBeVisible();
+    await page.locator('#displayed-text').screenshot({path:'partial.png'}); //screenshot of the particular element
+
+    await page.locator("#hide-textbox").click();
+    await page.screenshot({path: 'screenshot.png'});    //take screenshot of the page
+
+    await expect(page.locator("#displayed-text")).toBeHidden();
+})
+
+//Visual (comparison)
+test.only('Visual testing',async({page})=>
+{
+    await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+    expect(await page.screenshot()).toMatchSnapshot('landing.png')  // comparing expected screenshot with actual screenshot. 
+                                                                    // since we have not hardcoded landing.png, first run will fail.
+                                                                    // but that failed TC creates and stores a new landing.png which 
+                                                                    // will act as base for comparison. so the next subsequent run,
+                                                                    // landing.png will act as expected and actual will be provided
+                                                                    // by running TC.
+})

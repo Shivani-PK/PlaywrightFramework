@@ -46,7 +46,7 @@ test.only('Fake response API testing',async ({page})=>
                 body,
             }
         ) //fulfill method sends response from API response to browser. but we are sending fake response. 
-        // fulfill method sends many elements lik response, header, API response and so on. if we dont send anything, by default whatever 
+        // fulfill metshod sends many elements lik response, header, API response and so on. if we dont send anything, by default whatever 
         // route has, it will give it to fulfill method. but here we are explicitly sending fake body. means it is overwriting with 
         // existing body. means we are injecting the body whatever we want to send.
     }
