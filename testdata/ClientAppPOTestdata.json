@@ -1,0 +1,18 @@
+[
+    {
+    "userName": "shisv@gmail.com",
+    "password": "@Test123",
+    "productName" : "ADIDAS ORIGINAL",
+    "cardCvv" : "123",
+    "cardName" : "shivani",
+    "countryName" : "India"
+    },
+    {
+    "userName": "shisv@gmail.com",
+    "password": "@Test123",
+    "productName" : "ZARA COAT 3",
+    "cardCvv" : "2223",
+    "cardName" : "rahul",
+    "countryName" : "Canada"
+    }
+]
