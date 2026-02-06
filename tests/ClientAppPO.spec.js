@@ -39,7 +39,7 @@ for(const data of dataset)
     });
 
 }
-    customtest.only(`Client App Login `,async ({page,testDataForOrder})=> 
+    customtest(`Client App Login `,async ({page,testDataForOrder})=> 
     {
 
         let orderId;
