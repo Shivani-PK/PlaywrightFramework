@@ -1,9 +1,7 @@
-const {test, expect, selectors} = require('@playwright/test');
-const { only } = require('node:test');
-const { text } = require('stream/consumers');
+import { test, expect, selectors } from '@playwright/test';
 
 
-test('browser context playwright test',async ({browser})=> 
+test('@Web browser context playwright test',async ({browser})=> 
 {
     
     const context=await browser.newContext(); //Creates a new browser context
@@ -27,10 +25,10 @@ test('browser context playwright test',async ({browser})=>
 
     await userName.fill("");
     await userName.fill("rahulshettyacademy");
-    await password.fill("learning");
+    await password.fill("Learning@830$3mK2");
     await signIn.click();
 
-    console.log(await cardTitles.first() .textContent()); // gets first element in list
+    console.log(await cardTitles.first().textContent()); // gets first element in list
     console.log(await cardTitles.nth(1).textContent());   // gets nth element in list
 
     const allTitles=await cardTitles.allTextContents();
@@ -101,7 +99,7 @@ test('Child windows handling', async ({browser})=>
 
     const arrayText=text.split("@")
     const domain=arrayText[1].split(" ")[0]
-    await console.log(domain);
+    console.log(domain);
 
     await expect( newPage.locator(".red")).toContainText("Please email us at mentor@rahulshettyacademy.com with below template to receive response ");
 

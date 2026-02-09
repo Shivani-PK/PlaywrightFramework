@@ -1,5 +1,5 @@
-const {test,expect,request} = require("@playwright/test")
-const {APIUtils} = require('./utils/APIUtils');
+import { test, expect, request } from "@playwright/test";
+import { APIUtils } from '../utils/APIUtils';
 // verify if order created is showing in history page
 // precondition - create order
 
@@ -46,7 +46,7 @@ test.beforeAll(async ()=>
     // console.log(orderResponseJson);
 });
 
-test.only('API testing',async ({page})=> 
+test(' @API API testing',async ({page})=> 
 {
 
     

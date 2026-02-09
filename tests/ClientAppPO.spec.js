@@ -1,7 +1,6 @@
-const {test, expect, selectors} = require('@playwright/test');
-const {customtest} = require ('../testdata/test-base')
-const { only } = require('node:test');
-const {POManager}=require('../pageobjects/POManager');
+import { test, expect, selectors } from '@playwright/test';
+import { customtest } from '../testdata/test-base';
+import { POManager } from '../pageobjects/POManager';
 
 //JSON-> string-> JS object - sometimes JSON might have encoding data, which cannot be converted into object using parse method.
 // hence first convert JSON to string and then use parse method.
@@ -9,7 +8,7 @@ const dataset=JSON.parse(JSON.stringify(require('../testdata/ClientAppPOTestdata
 
 for(const data of dataset)
 {    
-    test(`Client App Login for ${data.productName}`,async ({page})=> 
+    test(`@Web Client App Login for ${data.productName}`,async ({page})=> 
     {
 
         let orderId;
@@ -61,4 +60,3 @@ for(const data of dataset)
 
 
     });
-

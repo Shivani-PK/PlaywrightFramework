@@ -1,5 +1,4 @@
-const {test, expect, selectors} = require('@playwright/test');
-const { only } = require('node:test');
+import { test, expect, selectors } from '@playwright/test';
 
 let webContext;
 const email="shisv@gmail.com"
@@ -23,7 +22,7 @@ test.beforeAll(async ({browser})=>
 })
 
 
-test('browser context playwright test',async ({})=> 
+test('browser context playwright test 1',async ({})=> 
 {
     const page=await webContext.newPage();
     await page.goto("https://rahulshettyacademy.com/client");
@@ -114,7 +113,7 @@ test('browser context playwright test',async ({})=>
     expect(orderId.includes(orderDetails)).toBeTruthy();
 });
 
-test('Test case 2',async()=>
+test('@API Test case 2',async()=>
 {
 
     const page=await webContext.newPage();

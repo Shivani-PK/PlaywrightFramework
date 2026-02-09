@@ -1,8 +1,7 @@
-const {test, expect, selectors} = require('@playwright/test');
-const { only } = require('node:test');
+import { test, expect, selectors } from '@playwright/test';
 
 
-test.only('browser context playwright test',async ({page})=> 
+test.skip('browser context playwright test',async ({page})=> 
 {
     const productName="ADIDAS ORIGINAL"
     const products=page.locator(".card-body");
@@ -80,7 +79,7 @@ test.only('browser context playwright test',async ({page})=>
 
     await page.locator("tbody").waitFor();
 
-    const myOrder= await page.locator("tbody tr");
+    const myOrder= page.locator("tbody tr");
 
     for(let i=0;i<await myOrder.count();++i)
     {

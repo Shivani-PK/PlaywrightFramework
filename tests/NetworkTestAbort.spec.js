@@ -1,7 +1,4 @@
-const {test, expect, selectors} = require('@playwright/test');
-const { request } = require('http');
-const { only } = require('node:test');
-const { text } = require('stream/consumers');
+import { test, expect, selectors } from '@playwright/test';
 
 
 test('browser context playwright test',async ({browser})=> 
@@ -44,7 +41,7 @@ test('browser context playwright test',async ({browser})=>
     const allTitles=await cardTitles.allTextContents();
 
     console.log(allTitles);
-    await page.pause();
+    //await page.pause();
 
 });
 

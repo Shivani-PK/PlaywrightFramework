@@ -1,6 +1,9 @@
-const {test,expect}=require ('@playwright/test')
+import { test, expect } from '@playwright/test';
+//test.describe.configure({mode:'parallel'});
+//test.describe.configure({mode:'serial'});
 
-test( "Popup validations",async({page})=>
+
+test( "@Web Popup validations",async({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     // await page.goto("http://google.com");
@@ -46,7 +49,7 @@ test('Screenshot and visual comparison',async ({page})=>
 })
 
 //Visual (comparison)
-test.only('Visual testing',async({page})=>
+test('Visual testing',async({page})=>
 {
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
     expect(await page.screenshot()).toMatchSnapshot('landing.png')  // comparing expected screenshot with actual screenshot. 

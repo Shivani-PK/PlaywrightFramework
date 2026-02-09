@@ -1,8 +1,7 @@
-const {test, expect, selectors} = require('@playwright/test');
-const { only } = require('node:test');
+import { test, expect, selectors } from '@playwright/test';
 
 
-test.only('browser context playwright test',async ({page})=> 
+test('browser context playwright test',async ({page})=> 
 {
     const productName="ADIDAS ORIGINAL"
     const products=page.locator(".card-body");
@@ -16,7 +15,7 @@ test.only('browser context playwright test',async ({page})=>
     // means it waits until network renders all the data. it is discouraged since it is flaky
     await page.locator(".card-body b").first().waitFor();
 
-    await page.locator(".card-body").filter({hasText:"ADIDAS ORIGINAL"}).getByRole("button",{name:" Add To Cart"}).nth(1).click();
+    await page.locator(".card-body").filter({hasText:"ADIDAS ORIGINAL"}).getByRole("button",{name:" Add To Cart"}).click();
 
 
     await page.getByRole("listitem").getByRole("button",{name:'Cart'}).click();

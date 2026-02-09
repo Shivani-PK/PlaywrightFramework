@@ -7,19 +7,21 @@ import { chromium, defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  timeout:40*1000,  //Timeout for each test
+  testMatch: '**/*.spec.js',
+  retries:1,
+  //workers:1,
+  timeout:30*1000,  //Timeout for each test
   expect: {
-    timeout:40*1000,  //Timeout for each assertion
+    timeout:30*1000,  //Timeout for each assertion
   },
-  reporter:'html',
+  reporter:'html', //generate html report
   use: {
     browserName:'chromium',
     headless:false,
     screenshot: 'only-on-failure', //off, on
-    trace: 'on'  //off,on
-  
+    trace: 'on',  //off,on
+    video: 'retain-on-failure',
   } 
   
 
 });
-

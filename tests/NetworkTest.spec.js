@@ -1,5 +1,5 @@
-const {test,expect,request} = require("@playwright/test")
-const {APIUtils} = require('../utils/APIUtils');
+import { test, expect, request } from "@playwright/test";
+import { APIUtils } from '../utils/APIUtils';
 // verify if order created is showing in history page
 // precondition - create order
 
@@ -20,7 +20,7 @@ test.beforeAll(async ()=>
 
 });
 
-test.only('Fake response API testing',async ({page})=> 
+test('Fake response API testing',async ({page})=> 
 {
    
     await page.addInitScript(value=>    // inserting toekn into browser's local storage. addInitScript used for executing custom
