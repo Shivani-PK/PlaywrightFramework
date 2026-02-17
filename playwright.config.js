@@ -22,6 +22,4 @@ export default defineConfig({
     trace: 'on',  //off,on
     video: 'retain-on-failure',
   } 
-  
-
 });
